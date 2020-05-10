@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^4on@bt^k745)ou)my9=d8qi&!0onxn(2fosyk)e4ad39&0w(='
+SECRET_KEY = os.environ.get('OPEN_CANDIDATE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'opencandidateapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'open_candidate_api',
-        'USER': 'root',
-        'PASSWORD': 'qwerty123456',
+        'NAME': os.environ.get('OPEN_CANDIDATE_DB_NAME'),
+        'USER': os.environ.get('OPEN_CANDIDATE_DB_USER'),
+        'PASSWORD': os.environ.get('OPEN_CANDIDATE_DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306',
     }
